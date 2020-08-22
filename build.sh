@@ -6,7 +6,7 @@ set -ex
 echo "TORCH"
 sudo apt-get update
 echo "TORCH INSTALL"
-sudp apt-get install docker-ce
+sudo apt-get install docker-ce
 echo "FINISHED UPDATE"
 apt-cache madison docker-ce
 echo "FINISHED UPDATE 2"
