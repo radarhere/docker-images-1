@@ -4,7 +4,7 @@
 set -ex
 
 echo "TORCH"
-apt-get update
+sudo apt-get update
 echo "FINISHED UPDATE"
 apt-cache madison docker-ce
 echo "FINISHED UPDATE 2"
