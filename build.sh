@@ -14,7 +14,7 @@ sudo apt-get update
 echo "TORCHD"
 apt-cache policy docker-ce
 echo "TORCHE"
-apt-get install -y docker-ce
+sudo apt-get install -y docker-ce
 echo "TORCHF"
 
 echo "FINISHED UPDATE 2"
