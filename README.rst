@@ -1,8 +1,8 @@
 ##################################################
-Ubuntu xenial 64-bit images with Pythons installed
+Ubuntu bionic 64-bit images with Pythons installed
 ##################################################
 
-Ubuntu xenial (16.04) docker images (64-bit) with Pythons:
+Ubuntu bionic (18.04) docker images (64-bit) with Pythons:
 
 * 2.7;
 * 3.4;
@@ -23,5 +23,5 @@ Extra development libraries left in the installation:
 - multibuild libraries
 - libffi-dev (needed for cffi)
 
-Use them via (for x86_64) ``docker pull multibuild/xenial_x86_64; docker run -it multibuild/xenial_x86_64 /bin/bash``
+Use them via (for x86_64) ``docker pull multibuild/bionic_x86_64; docker run -it multibuild/bionic_x86_64 /bin/bash``
 
