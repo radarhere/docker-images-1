@@ -8,12 +8,6 @@ apt-get update
 apt-get install -y wget
 PIP_ROOT_URL="https://bootstrap.pypa.io"
 wget $PIP_ROOT_URL/get-pip.py
-for pyver in 2.7 3.5 3.6 3.7; do
-    pybin=python$pyver
-    apt-get install -y ${pybin} ${pybin}-dev ${pybin}-tk
-    get_pip_fname="get-pip.py"
-    ${pybin} ${get_pip_fname}
-done
 for pyver in 3.8 3.9; do
     pybin=python$pyver
     apt-get install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
