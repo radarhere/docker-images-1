@@ -69,9 +69,9 @@ fi
 
 # Compile narrow unicode Python
 # Compiled Pythons need to be flagged in the choose_python.sh script.
-compile_python 2.7.11 "--enable-unicode=ucs2"
+compile_python 3.9.1 "--enable-unicode=ucs2"
 # Get pip for narrow unicode Python
-/opt/cp27m/bin/python get-pip.py
+/opt/cp39/bin/python3 get-pip.py
 
 # Compiled Pythons need to be flagged in the choose_python.sh script.
 #compile_python 3.8.0rc1 "--with-openssl=/usr/local/ssl"
