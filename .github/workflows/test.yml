@@ -1,0 +1,45 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - "alpine3.18-x86_64"
+          - "focal-x86_64"
+        include:
+          - image: "focal-arm64v8"
+            qemu-arch: "aarch64"
+          - image: "focal-ppc64le"
+            qemu-arch: "ppc64le"
+          - image: "focal-s390x"
+            qemu-arch: "s390x"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Docker login
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      - name: Set up QEMU
+        if: "matrix.qemu-arch"
+        run: |
+          docker run --rm --privileged aptman/qus -s -- -p ${{ matrix.qemu-arch }}
+      - name: Build
+        run: |
+          cd docker && cp Dockerfile-${{ matrix.image }} Dockerfile && docker build -t $DOCKER_USER/${{ matrix.image }} .
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+      - name: Push
+        run: |
+          docker push $DOCKER_USER/${{ matrix.image }}
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
