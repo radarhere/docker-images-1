@@ -14,6 +14,8 @@ jobs:
           - "alpine3.18-x86_64"
           - "focal-x86_64"
         include:
+          - image: "alpine3.18-arm64v8"
+            qemu-arch: "aarch64"
           - image: "focal-arm64v8"
             qemu-arch: "aarch64"
           - image: "focal-ppc64le"
