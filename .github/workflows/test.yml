@@ -20,6 +20,8 @@ jobs:
             qemu-arch: "ppc64le"
           - image: "focal-s390x"
             qemu-arch: "s390x"
+          - image: "bionic-i686"
+            qemu-arch: "i386"
     steps:
       - name: Checkout
         uses: actions/checkout@v3

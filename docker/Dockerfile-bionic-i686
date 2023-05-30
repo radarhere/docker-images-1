@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM i386/ubuntu:bionic
 
 RUN apt update
 RUN apt install -y gnupg
@@ -7,7 +7,7 @@ RUN apt install -y gnupg
 COPY build_install_pythons.sh /
 
 # Install Pythons and matching pips
-RUN bash build_install_pythons.sh focal && rm build_install_pythons.sh
+RUN bash build_install_pythons.sh bionic && rm build_install_pythons.sh
 
 # Install manylinux1 libraries. See:
 # https://www.python.org/dev/peps/pep-0513/#the-manylinux1-policy
@@ -17,8 +17,8 @@ RUN apt-get update && \
         libxrender1 libice6 libsm6 libgl1-mesa-glx libglib2.0-0
 
 # Get virtualenv
-RUN pip3.10 install --user virtualenv
+RUN pip3.11 install --user virtualenv
 
 # Run Python selection on way into image
 COPY choose_python.sh /usr/bin/
-ENTRYPOINT ["/usr/bin/choose_python.sh"]
+ENTRYPOINT ["linux32", "/usr/bin/choose_python.sh"]

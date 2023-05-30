@@ -2,7 +2,7 @@
 # Install Pythons 2.7 3.6 3.7 3.8 3.9 3.10 3.11 3.12 and matching pips
 set -ex
 
-echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu focal main" > /etc/apt/sources.list.d/deadsnakes.list
+echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $1 main" > /etc/apt/sources.list.d/deadsnakes.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A755776
 apt-get update
 apt-get install -y wget
@@ -22,12 +22,21 @@ for pyver in 3.6; do
     ${pybin} ${get_pip_fname}
 done
 wget $PIP_ROOT_URL/get-pip.py
-for pyver in 3.7 3.8 3.9 3.10 3.11 3.12; do
-    pybin=python$pyver
-    apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
-    get_pip_fname="get-pip.py"
-    ${pybin} ${get_pip_fname}
-done
+if [ "$1" == "focal" ]; then
+	for pyver in 3.7 3.8 3.9 3.10 3.11 3.12; do
+		pybin=python$pyver
+		apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
+		get_pip_fname="get-pip.py"
+		${pybin} ${get_pip_fname}
+	done
+else
+	for pyver in 3.7 3.8 3.9 3.10 3.11; do
+		pybin=python$pyver
+		apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
+		get_pip_fname="get-pip.py"
+		${pybin} ${get_pip_fname}
+	done
+fi
 BUILD_PKGS="zlib1g-dev libbz2-dev libncurses5-dev libreadline-gplv2-dev \
     libsqlite3-dev libssl-dev libgdbm-dev tcl-dev tk-dev \
     liblzma-dev uuid-dev"
