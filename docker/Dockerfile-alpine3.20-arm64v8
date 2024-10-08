@@ -1,6 +1,6 @@
 # based on https://github.com/docker-library/python/blob/8d48af512dc58e9c29c9d4ee59477c195a29cbdc/3.10/alpine3.13/Dockerfile
 
-FROM  --platform=linux/arm64/v8 alpine:3.18
+FROM  --platform=linux/arm64/v8 alpine:3.20
 
 ARG PLATFORM=arm64v8
 ENV PYTHON_VERSIONS="3.8.19 3.9.19 3.10.14 3.11.9 3.12.7 3.13.0"
