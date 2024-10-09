@@ -28,4 +28,7 @@ Extra development libraries left in the installation:
 
 Use them via (for x86_64) ``docker run -it multibuild/focal_x86_64 /bin/bash``
 
+There are also alpine-based images for x86 and aarch64, where we build python
+versions not available from the distro.
+
 The images live under https://hub.docker.com/u/multibuild
