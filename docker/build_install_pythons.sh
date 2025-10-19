@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install Pythons 2.7 3.6 3.7 3.8 3.9 3.10 3.11 3.12 3.13 and matching pips
+# Install Pythons 3.7 3.8 3.9 3.10 3.11 3.12 3.13 and matching pips
 set -ex
 
 echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu noble main" > /etc/apt/sources.list.d/deadsnakes.list
@@ -7,14 +7,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A755776
 apt-get update
 apt-get install -y wget
 PIP_ROOT_URL="https://bootstrap.pypa.io"
-for pyver in 2.7; do
-    pybin=python$pyver
-    apt install -y ${pybin} ${pybin}-dev ${pybin}-tk
-    wget $PIP_ROOT_URL/pip/$pyver/get-pip.py -O get-pip-$pyver.py
-    get_pip_fname="get-pip-${pyver}.py"
-    ${pybin} ${get_pip_fname}
-done
-for pyver in 3.6 3.7; do
+for pyver in 3.7; do
     pybin=python$pyver
     apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
     wget $PIP_ROOT_URL/pip/$pyver/get-pip.py -O get-pip-$pyver.py

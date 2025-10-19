@@ -4,8 +4,6 @@ Ubuntu noble 64-bit images with Pythons installed
 
 Ubuntu noble (24.04) docker images (64-bit) with Pythons:
 
-* 2.7
-* 3.6
 * 3.7
 * 3.8
 * 3.9
