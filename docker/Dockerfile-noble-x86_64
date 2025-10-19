@@ -1,6 +1,5 @@
-FROM s390x/ubuntu:focal
+FROM ubuntu:noble
 
-ARG PLATFORM=s390x
 RUN apt update
 RUN apt install -y gnupg
 # Script to choose Python version
@@ -10,12 +9,11 @@ COPY build_install_pythons.sh /
 # Install Pythons and matching pips
 RUN bash build_install_pythons.sh && rm build_install_pythons.sh
 
-# Install manylinux1 libraries. See:
-# https://www.python.org/dev/peps/pep-0513/#the-manylinux1-policy
+# Install manylinux2014 libraries. See:
+# https://peps.python.org/pep-0599/#the-manylinux2014-policy
 # https://github.com/multi-build/multibuild/issues/106
 RUN apt-get update && \
-        apt-get install -y libncurses5 libgcc1 libstdc++6 libc6 libx11-6 libxext6 \
-        libxrender1 libice6 libsm6 libgl1-mesa-glx libglib2.0-0
+        apt-get install -y libc6 libgcc1 libgl1 libglib2.0-0 libice6 libsm6 libstdc++6 libx11-6 libxext6 libxrender1
 
 # Get virtualenv
 RUN pip3.10 install --user virtualenv

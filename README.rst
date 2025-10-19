@@ -1,8 +1,8 @@
 ##################################################
-Ubuntu focal 64-bit images with Pythons installed
+Ubuntu noble 64-bit images with Pythons installed
 ##################################################
 
-Ubuntu focal (20.04) docker images (64-bit) with Pythons:
+Ubuntu noble (24.04) docker images (64-bit) with Pythons:
 
 * 2.7
 * 3.6
@@ -26,7 +26,7 @@ Extra development libraries left in the installation:
 - multibuild libraries
 - libffi-dev (needed for cffi)
 
-Use them via (for x86_64) ``docker run -it multibuild/focal_x86_64 /bin/bash``
+Use them via (for x86_64) ``docker run -it multibuild/noble_x86_64 /bin/bash``
 
 There are also alpine-based images for x86 and aarch64, where we build python
 versions not available from the distro.

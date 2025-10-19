@@ -1,5 +1,5 @@
 os: linux
-dist: focal
+dist: noble
 services:
   - docker
 
@@ -10,13 +10,13 @@ cache:
 matrix:
   include:
    - arch: amd64
-     env: DIST="focal" PLATFORM="x86_64"
+     env: DIST="noble" PLATFORM="x86_64"
    - arch: arm64
-     env: DIST="focal" PLATFORM="arm64v8"
+     env: DIST="noble" PLATFORM="arm64v8"
    - arch: ppc64le
-     env: DIST="focal" PLATFORM="ppc64le"
+     env: DIST="noble" PLATFORM="ppc64le"
    - arch: s390x
-     env: DIST="focal" PLATFORM="s390x"
+     env: DIST="noble" PLATFORM="s390x"
    - arch: amd64
      env: DIST="alpine3.22" PLATFORM="x86_64"
    - arch: arm64
@@ -30,4 +30,4 @@ deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    branch: focal
+    branch: noble
