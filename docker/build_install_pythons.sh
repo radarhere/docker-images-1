@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install Pythons 3.7 3.8 3.9 3.10 3.11 3.12 3.13 and matching pips
+# Install Pythons 3.7 3.8 3.9 3.10 3.11 3.12 3.13 3.14 and matching pips
 set -ex
 
 echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu noble main" > /etc/apt/sources.list.d/deadsnakes.list
@@ -7,7 +7,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A755776
 apt-get update
 apt-get install -y wget
 PIP_ROOT_URL="https://bootstrap.pypa.io"
-for pyver in 3.7; do
+for pyver in 3.7 3.8; do
     pybin=python$pyver
     apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
     wget $PIP_ROOT_URL/pip/$pyver/get-pip.py -O get-pip-$pyver.py
@@ -16,24 +16,29 @@ for pyver in 3.7; do
 done
 wget $PIP_ROOT_URL/get-pip.py
 get_pip_fname="get-pip.py"
-for pyver in 3.8 3.9 3.10 3.11 3.12; do
+for pyver in 3.9 3.10 3.11; do
     pybin=python$pyver
     apt install -y ${pybin} ${pybin}-dev ${pybin}-tk ${pybin}-distutils
     ${pybin} ${get_pip_fname}
 done
-for pyver in 3.13; do
+for pyver in 3.13 3.14; do
     pybin=python$pyver
     # no -distutils
     apt install -y ${pybin} ${pybin}-dev ${pybin}-tk
     ${pybin} ${get_pip_fname}
 done
-for pyver in 3.13-nogil; do
+for pyver in 3.13-nogil 3.14-nogil; do
     pybin=python$pyver
     # only pybin
     apt install -y ${pybin}
     ${pybin} ${get_pip_fname}
 done
-BUILD_PKGS="zlib1g-dev libbz2-dev libncurses5-dev libreadline-gplv2-dev \
+for pyver in 3.12; do
+    pybin=python$pyver
+    # no -distutils
+    apt install -y ${pybin} ${pybin}-dev ${pybin}-tk python3-pip
+done
+BUILD_PKGS="zlib1g-dev libbz2-dev libncurses5-dev libreadline-dev \
     libsqlite3-dev libssl-dev libgdbm-dev tcl-dev tk-dev \
     liblzma-dev uuid-dev"
 apt-get -y install build-essential $BUILD_PKGS libffi-dev

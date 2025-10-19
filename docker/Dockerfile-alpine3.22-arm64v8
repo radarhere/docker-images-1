@@ -3,7 +3,7 @@
 FROM  --platform=linux/arm64/v8 alpine:3.22
 
 ARG PLATFORM=arm64v8
-ENV PYTHON_VERSIONS="3.8.19 3.9.19 3.10.14 3.11.9 3.12.7 3.13.0"
+ENV PYTHON_VERSIONS="3.8.20 3.9.24 3.10.19 3.11.14 3.12.12 3.13.9 3.14.0"
 
 # http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
