@@ -13,7 +13,7 @@ Ubuntu noble (24.04) docker images (64-bit) with Pythons:
 * 3.13 (including 3.13-nogil)
 * 3.14 (including 3.14-nogil)
 
-installed via ``apt-get install python2.7-dev`` (etc).
+installed via ``apt-get install python3.7-dev`` (etc).
 
 Pip installed for each Python via ensurepip (for python3) or `get-pip.py
 <https://bootstrap.pypa.io/get-pip.py>`_.
